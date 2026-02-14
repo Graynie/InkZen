@@ -12,7 +12,9 @@ func main() {
 	db := repository.NewDatabase()
 	defer db.Close()
 
-	router := handlers.NewRouter()
+	repository.InitSchema(db)
+
+	router := handlers.NewRouter(db)
 
 	fmt.Println("Servidor corriendo en http://localhost:3000")
 	http.ListenAndServe(":3000", router)
