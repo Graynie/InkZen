@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<h2>Manga {{.Manga}} - Capítulo {{.Capitulo}}</h2>
+
+<div style="margin-bottom:20px;">
+    {{if .Prev}}
+        <a href="/capitulo?manga={{.Manga}}&cap={{.Prev}}">← Anterior</a>
+    {{end}}
+
+    |
+
+    <a href="/manga?id={{.Manga}}">Volver al manga</a>
+
+    |
+
+    {{if .Next}}
+        <a href="/capitulo?manga={{.Manga}}&cap={{.Next}}">Siguiente →</a>
+    {{end}}
+</div>
+
+<hr>
+
+{{range .Imagenes}}
+    <img src="{{.}}" style="width:100%; margin-bottom:10px;">
+{{end}}
+
+</body>
+</html>

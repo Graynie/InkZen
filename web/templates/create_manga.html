@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Registrar Manga</title>
+</head>
+<body>
+
+    <h1>Registrar Nuevo Manga</h1>
+
+    <form method="POST" action="/mangas-web">
+        <label>Título:</label><br>
+        <input type="text" name="titulo" required><br><br>
+
+        <label>Autor:</label><br>
+        <input type="text" name="autor" required><br><br>
+
+        <label>Género:</label><br>
+        <input type="text" name="genero"><br><br>
+
+        <label>Idioma:</label><br>
+        <input type="text" name="idioma"><br><br>
+
+        <label>Editorial:</label><br>
+        <input type="text" name="editorial"><br><br>
+
+        <label>Descripción:</label><br>
+        <textarea name="descripcion"></textarea><br><br>
+
+        <label>Total de capítulos:</label><br>
+        <input type="number" name="capitulos_tot"><br><br>
+
+        <label>Disponible:</label>
+        <input type="checkbox" name="disponible" value="true"><br><br>
+
+        <button type="submit">Guardar Manga</button>
+    </form>
+
+    <br>
+    <a href="/mangas-web">Ver lista de mangas</a>
+
+</body>
+</html>

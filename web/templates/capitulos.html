@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<h2>Capítulos</h2>
+
+<ul>
+{{range .Capitulos}}
+    <li>
+        <a href="/capitulo?manga={{$.MangaID}}&cap={{.}}">
+            {{.}}
+        </a>
+    </li>
+{{end}}
+</ul>
+
+<a href="/mangas-web">← Volver</a>
+
+</body>
+</html>

@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{{.Manga.Titulo}}</title>
+</head>
+<body>
+
+<div style="display:flex; gap:30px; margin-bottom:30px;">
+
+    <!-- Portada -->
+    <div>
+        <img src="/static/uploads/{{.Manga.ID}}/portada.jpg"
+             style="width:250px; height:350px; object-fit:cover;">
+    </div>
+
+    <!-- Información -->
+    <div>
+        <h1>{{.Manga.Titulo}}</h1>
+
+        <p><strong>Autor:</strong> {{.Manga.Autor}}</p>
+        <p><strong>Género:</strong> {{.Manga.Genero}}</p>
+        <p><strong>Idioma:</strong> {{.Manga.Idioma}}</p>
+        <p><strong>Editorial:</strong> {{.Manga.Editorial}}</p>
+        <p><strong>Total capítulos:</strong> {{.Manga.CapitulosTot}}</p>
+
+        <p><strong>Descripción:</strong></p>
+        <p>{{.Manga.Descripcion}}</p>
+
+        <!-- Botón Continuar Leyendo -->
+        {{if .Continue}}
+        <div style="margin-top:20px;">
+            <a href="/capitulo?manga={{.Manga.ID}}&cap={{.Continue}}">
+                <button style="padding:10px 15px;">
+                    Continuar leyendo (Capítulo {{.Continue}})
+                </button>
+            </a>
+        </div>
+        {{end}}
+
+    </div>
+
+</div>
+
+<hr>
+
+<h2>Capítulos</h2>
+
+<p>
+Progreso: {{.Progreso}} / {{.Manga.CapitulosTot}} 
+({{.Porcentaje}}%)
+</p>
+
+<div style="display:flex; flex-wrap:wrap; gap:10px;">
+
+{{range .Capitulos}}
+
+    {{if .Actual}}
+        <a href="/capitulo?manga={{$.Manga.ID}}&cap={{.Numero}}">
+            <div style="padding:10px; background-color:orange;">
+                ▶ Cap {{.Numero}}
+            </div>
+        </a>
+
+    {{else if .Leido}}
+        <a href="/capitulo?manga={{$.Manga.ID}}&cap={{.Numero}}">
+            <div style="padding:10px; background-color:lightgreen;">
+                ✔ Cap {{.Numero}}
+            </div>
+        </a>
+
+    {{else}}
+        <a href="/capitulo?manga={{$.Manga.ID}}&cap={{.Numero}}">
+            <div style="padding:10px; background-color:#eee;">
+                Cap {{.Numero}}
+            </div>
+        </a>
+
+    {{end}}
+
+{{end}}
+
+</div>
+
+
+<br>
+<a href="/mangas-web">← Volver al catálogo</a>
+
+</body>
+</html>
